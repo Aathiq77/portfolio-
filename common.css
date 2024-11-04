@@ -8,6 +8,7 @@
     --text-light: #6b7280;
     --extra-light: #faf5ff;
     --max-width: 1200px;
+    --semi-transparent-color: rgba(42, 157, 143, 0.6);
 }
 
 * {
@@ -31,6 +32,7 @@ nav {
     left: 0;
     background-color: #ffffff;
     z-index: 99;
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .nav__content {
@@ -40,9 +42,10 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);/*shadow for nav*/
 }
-
-nav .logo a {
+/*attribute selector*/
+.logo a[href="homepage.html"] {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--primary-color);
@@ -87,6 +90,10 @@ ul li a:hover {
     border-bottom-color: var(--secondary-color);
     color: var(--secondary-color);
 }
+/*child combinator*/
+ul > li:first-child {
+    font-style: italic;/* Make the first list item italic */
+}
 
 .section {
     background-color: var(--extra-light);
@@ -121,8 +128,12 @@ ul li a:hover {
     line-height: 3rem;
     color: var(--text-dark);
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(11, 190, 235, 0.966);/*text shadow*/
 }
 
+.title ~ .description{
+    font-weight: bold;/* Apply bold to all descriptions following a title */
+}
 .title span {
     font-weight: 600;
 }
@@ -138,6 +149,7 @@ ul li a:hover {
     gap: 1rem;
 }
 
+
 .action__btns button {
     font-size: 1rem;
     font-weight: 600;
@@ -148,6 +160,11 @@ ul li a:hover {
     border-radius: 10px;
     transition: 0.3s;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(224, 6, 6, 0.4);/*shadow*/
+}
+/*transform*/
+.action__btns button:hover {
+    transform: scale(1.05); /* Slightly enlarges the button */
 }
 
 .About__me {
@@ -246,12 +263,12 @@ form{
 }
 .input-box{
     height: 40px;
-    width: 70%;
+    width: 100%;
     margin: 30px 0;
     position: relative;
 }
 .input{
-    width: 100%;
+    width: 70%;
     height: 100%;
     background: transparent;
     border: 2px solid #fff;
@@ -260,7 +277,9 @@ form{
     padding-left: 10px;
     color: #fff;
     font-size: 16px;
+    text-overflow: ellipsis;/* text effects*/
 }
+
 .input-box label{
     position: absolute;
     top: 50%;
@@ -273,13 +292,14 @@ form{
     transition: .3s;
 }
 
+
 .input-box .input:focus ~ label,
 .input-box .input:valid ~ label{
     top: -1px;
     left: 10px;
     background: #8f50ec;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 10px;
     padding: 5px;
 }
 textarea.input{
@@ -301,9 +321,21 @@ textarea.input{
     color: #9333ea;
     cursor: pointer;
     font-weight: 500;
+    box-shadow: 0 6px 8px rgba(16, 238, 8, 0.4);/*button shadow*/
 }
-.btn:hover{
+
+/* Style submit button on hover using attribute selector */
+.btn:hover[type="submit"] {
     background-color: #8bec0d;
+    box-shadow: 0 4px 15px rgba(221, 45, 45, 0.3);
+}
+
+/*Validity Pseudo-class*/
+.input:valid {
+    border: 2px solid green;
+}
+.input:invalid {
+    border: 2px solid red;
 }
 
 
@@ -347,7 +379,22 @@ textarea.input{
     width: 350px;
     background-color: #ae6cec;
     margin: 20px;
+    border-radius: 10px;/*rounded coners*/
 }
+.blog-box:hover {
+    transform: translateY(-10px); /* Move up slightly on hover */
+}
+/*structural selector*/
+.blog-box:nth-child(odd) {
+    background-color: #0ff535; /* green for odd boxes */
+}
+
+/* Style every first blog box */
+/* Nth Pseudo-class  */
+.blog-box:nth-child(1n) { 
+    border: 2px solid var(--secondary-color);
+}
+
 .blog-img{
     width: 100%;
     height: 250px;
@@ -357,6 +404,7 @@ textarea.input{
     height: 100%;
     object-fit: cover;
     object-position: center;
+    border-radius: 10px;
 }
 .blog-text{
     padding: 30px;
@@ -394,15 +442,14 @@ textarea.input{
     transition: all ease 0.3s;
 }
 
-/* ------------fontawasome---------*/
+/* ------------footer---------*/
 .footer {
     background-color: #111;
     color: #ccc;
     padding: 20px;
     width: 100%;
-    max-width: var(--max-width);
     margin: auto;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 15px rgba(252, 5, 141, 0.5);/*Added shadow for footer*/
     text-align: center;
 }
 
@@ -420,6 +467,7 @@ textarea.input{
 
 .social-icons a:hover {
     color: var(--primary-color-dark);
+    text-shadow: 1px 1px 2px rgba(11, 194, 240, 0.87);/*shadow social media icon*/
 }
 
 .footer-nav {
@@ -443,7 +491,6 @@ textarea.input{
     color: var(--text-light);
     margin-top: 10px;
 }
-
 
 @media (width < 750px) {
     nav .checkbox {
