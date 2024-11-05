@@ -31,7 +31,7 @@ nav {
     top: 0;
     left: 0;
     background-color: #ffffff;
-    z-index: 99;
+    z-index: 1001;
     border-bottom: 2px solid var(--primary-color);
 }
 
@@ -85,7 +85,7 @@ ul li a {
     text-decoration: none;
     font-weight: 600;
     color: var(--text-dark);
-    transition: 0.3s;
+    transition: 0.3s ;
 }
 
 ul li a:hover {
@@ -112,7 +112,7 @@ ul li:not(:last-child) a {
     background-color: var(--extra-light);
 }
 
-.section__container {
+.section__container  {
     min-height: 100vh;
     max-width: var(--max-width);
     margin: auto;
@@ -142,6 +142,8 @@ ul li:not(:last-child) a {
     color: var(--text-dark);
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(11, 190, 235, 0.966);/*text shadow*/
+    animation: slideIn 0.8s ease forwards; /* Use the animation */
+    opacity: 0; /* Initial state for fade-in */
 }
 
 .title ~ .description{
@@ -221,6 +223,7 @@ ul li:not(:last-child) a {
 
 .about_section {
     background-color: var(--extra-light);
+    margin-top: 100px;
 }
 
 .about__container {
@@ -232,6 +235,8 @@ ul li:not(:last-child) a {
     grid-template-columns: repeat(2, 1fr);
     gap: 4rem;
 }
+
+
 
 /* ------------------contact--------------*/
 
@@ -335,7 +340,7 @@ textarea.input{
 .btn{
     position: relative;
     top: 120px;
-    background: #fff;
+    background: linear-gradient(135deg, #ffffff, var(--primary-color));
     outline: none;
     border: none;
     border-radius: 4px;
@@ -402,7 +407,7 @@ textarea.input{
 }
 .blog-box{
     width: 350px;
-    background-color: #ae6cec;
+    background: linear-gradient(135deg, #ae6cec, #0ff535);
     margin: 20px;
     border-radius: 10px;/*rounded coners*/
 }
@@ -412,7 +417,7 @@ textarea.input{
 /*structural selector*/
 /* Nth Pseudo-class  */
 .blog-box:nth-child(odd) {
-    background-color: #0ff535; /* green for odd boxes */
+    background: var(--text-light); /* green for odd boxes */
 }
 /* Nth Pseudo-class  */
 .blog-box:nth-child(1n) { 
@@ -522,11 +527,21 @@ textarea.input{
     margin-top: 10px;
 }
 
+@keyframes slideIn {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 @media (width < 750px) {
     nav .checkbox {
         display: block;
+        z-index: 1001;
     }
-
     ul {
         position: absolute;
         width: 100%;
