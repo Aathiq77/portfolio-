@@ -45,7 +45,7 @@ nav {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);/*shadow for nav*/
 }
 /*attribute selector*/
-.logo a[href="homepage.html"] {
+.logo a[href="index.html"] {
     text-transform:uppercase;
     font-size: 1.5rem;
     font-weight: 600;
